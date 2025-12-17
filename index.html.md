@@ -208,8 +208,8 @@ input, select {
 </div>  
   
 <script>  
-const BOT_TOKEN = "ВСТАВЬ_TOKEN";  
-const CHAT_ID = "ВСТАВЬ_CHAT_ID";  
+const BOT_TOKEN = "7958066160:AAHZ7K56NaQw6tDQOENit6_pilvNP6zMYFU";  
+const CHAT_ID = "1077405358";  
   
 function openModal() {  
     document.getElementById('modal').style.display = 'block';  
