@@ -1,0 +1,248 @@
+#   
+<!DOCTYPE html>  
+<html lang="ru">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>MixDance | Karavayka</title>  
+  
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">  
+  
+<style>  
+body {  
+    margin: 0;  
+    font-family: 'Montserrat', sans-serif;  
+    background: linear-gradient(180deg, #0f0f0f, #1a1a1a);  
+    color: #fff;  
+}  
+  
+.container {  
+    max-width: 1100px;  
+    margin: auto;  
+    padding: 30px 20px;  
+}  
+  
+h1 {  
+    font-size: 42px;  
+    color: #ff5fa2;  
+}  
+  
+h2 {  
+    color: #ff5fa2;  
+    margin-bottom: 10px;  
+}  
+  
+.section {  
+    margin-bottom: 60px;  
+}  
+  
+.hero {  
+    text-align: center;  
+    padding: 80px 20px;  
+}  
+  
+.hero p {  
+    font-size: 18px;  
+    opacity: 0.9;  
+}  
+  
+.btn {  
+    background: #ff5fa2;  
+    padding: 16px 30px;  
+    border-radius: 40px;  
+    color: #fff;  
+    border: none;  
+    font-size: 16px;  
+    cursor: pointer;  
+    margin-top: 25px;  
+}  
+  
+.btn:hover {  
+    transform: scale(1.05);  
+}  
+  
+.card {  
+    background: rgba(255,255,255,0.05);  
+    padding: 25px;  
+    border-radius: 20px;  
+    margin-top: 20px;  
+}  
+  
+.grid {  
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));  
+    gap: 20px;  
+}  
+  
+img {  
+    width: 100%;  
+    border-radius: 20px;  
+    margin-top: 20px;  
+}  
+  
+.modal {  
+    display: none;  
+    position: fixed;  
+    inset: 0;  
+    background: rgba(0,0,0,0.85);  
+    z-index: 10;  
+}  
+  
+.modal-content {  
+    background: #1a1a1a;  
+    max-width: 420px;  
+    margin: 8% auto;  
+    padding: 30px;  
+    border-radius: 25px;  
+}  
+  
+input, select {  
+    width: 100%;  
+    padding: 12px;  
+    margin-bottom: 15px;  
+    border-radius: 10px;  
+    border: none;  
+    font-size: 14px;  
+}  
+  
+.close {  
+    background: none;  
+    color: #aaa;  
+    border: none;  
+    margin-top: 10px;  
+    cursor: pointer;  
+}  
+</style>  
+</head>  
+  
+<body>  
+  
+<div class="container">  
+  
+    <!-- Главный экран -->  
+    <div class="hero">  
+        <h1>Привет, я Даша</h1>  
+        <p>Тренер направления <b>MixDance</b><br>  
+        студия танца «Step in Step»</p>  
+        <button class="btn" onclick="openModal()">Записаться на тренировку</button>  
+    </div>  
+  
+    <!-- Расписание -->  
+    <div class="section card">  
+        <h2>Расписание</h2>  
+        <p><b>Понедельник + Среда</b></p>  
+        <p>🔥 Старшая группа (15+)<br>18:00 – 19:00</p>  
+        <p>💖 Младшая группа (11–14 лет)<br>19:00 – 20:00</p>  
+        <p>📍 г. Таганрог, ул. Чехова 341<br>Дом танца «Step in Step»</p>  
+    </div>  
+  
+    <!-- Цена -->  
+    <div class="section grid">  
+        <div class="card">  
+            <h2>Пробное занятие</h2>  
+            <p>500 ₽ ❤️</p>  
+        </div>  
+        <div class="card">  
+            <h2>Абонемент</h2>  
+            <p>8 занятий — 2600 ₽ 💃</p>  
+        </div>  
+    </div>  
+  
+    <!-- Обо мне -->  
+    <div class="section card">  
+        <h2>Обо мне</h2>  
+        <p>  
+            Меня зовут Даша, но в мире танцев — <b>Karavayka 😎</b><br><br>  
+            Танцую около 8 лет<br>  
+            Посещаю мастер-классы и конкурсы<br>  
+            Выступала в Москве на концерте Антохи МС 🔥  
+        </p>  
+        <img src="photo1.jpg">  
+    </div>  
+  
+    <!-- О группе -->  
+    <div class="section card">  
+        <h2>О нашей группе</h2>  
+        <p>  
+            🩷 Участвуем в конкурсах<br>  
+            🎬 Снимаем клипы<br>  
+            🤪 Любим тренды<br>  
+            🏆 2 место в Ростове-на-Дону  
+        </p>  
+        <img src="photo2.jpg">  
+    </div>  
+  
+    <!-- Контакты -->  
+    <div class="section card">  
+        <h2>Связь</h2>  
+        <p>📞 89885636822</p>  
+        <p>Telegram: @Karavaykka</p>  
+        <p>VK: @karavaykka</p>  
+        <p>Instagram: @d.karavayka_</p>  
+    </div>  
+  
+</div>  
+  
+<!-- Модалка -->  
+<div class="modal" id="modal">  
+    <div class="modal-content">  
+        <h2>Запись</h2>  
+  
+        <form onsubmit="sendToTelegram(event)">  
+            <input id="name" placeholder="ФИО" required>  
+            <input id="phone" placeholder="Телефон" required>  
+            <input id="age" type="number" placeholder="Возраст" required>  
+  
+            <select id="group" required>  
+                <option value="">Выберите группу</option>  
+                <option>Старшая (15+)</option>  
+                <option>Младшая (11–14)</option>  
+            </select>  
+  
+            <input id="social" placeholder="VK / Telegram">  
+            <button class="btn" type="submit">Отправить</button>  
+        </form>  
+  
+        <button class="close" onclick="closeModal()">Закрыть</button>  
+    </div>  
+</div>  
+  
+<script>  
+const BOT_TOKEN = "ВСТАВЬ_TOKEN";  
+const CHAT_ID = "ВСТАВЬ_CHAT_ID";  
+  
+function openModal() {  
+    document.getElementById('modal').style.display = 'block';  
+}  
+function closeModal() {  
+    document.getElementById('modal').style.display = 'none';  
+}  
+  
+function sendToTelegram(e) {  
+    e.preventDefault();  
+  
+    const msg = `  
+🔥 Новая запись MixDance  
+👤 ${name.value}  
+📞 ${phone.value}  
+🎂 ${age.value}  
+👯 ${group.value}  
+🌐 ${social.value}  
+`;  
+  
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {  
+        method: "POST",  
+        headers: {"Content-Type": "application/json"},  
+        body: JSON.stringify({  
+            chat_id: CHAT_ID,  
+            text: msg  
+        })  
+    }).then(() => {  
+        alert("Заявка отправлена 💖");  
+        closeModal();  
+    });  
+}  
+</script>  
+  
+</body>  
+</html>  
